@@ -29,22 +29,18 @@ jobs:
           node-version: '20.x'
       - run: npm install
       - run: npm test
-  
- deploy:
+deploy:
      needs: test
 
      permissions:
         contents: write
         pages: write
         id-token: write
-
- environment:
+environment:
         name: production
         url: ${{ steps.deployment.outputs.page_url }}
-
-  runs-on: ubuntu-latest
-        
-  steps:
+runs-on: ubuntu-latest
+      steps:
             - name: checkout repo
               uses: actions/checkout@v4
               with:
